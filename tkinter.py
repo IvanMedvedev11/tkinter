@@ -1,37 +1,67 @@
 from tkinter import *
 from tkinter import messagebox
 root = Tk()
-window = Tk()
-w2 = Tk()
-window.title("Второе окно")
-window.geometry('500x300')
-def set_blue():
-    bt2['bg'] = 'blue'
-    bt2['activeforeground'] = 'blue'
-def show_message():
-    messagebox.showinfo("wrj;vnwrgv", ent.get())
-root.title("Окно без заголовка")
-root.geometry("500x300+0+0")
-image = PhotoImage(file="images.jpg")
-bt1 = Button(root, bg='red', fg='white', image=image)
-bt1.place(x=0, y=0)
-bt2 = Button(root, text='Кнопка 2', bg='red', fg='white', font=('Comic Sans', 10), padx=10, pady=10, activebackground='white', activeforeground='red')
-bt2['command'] = set_blue
-bt2.place(x=400, y=0)
-bt3 = Button(window, height=300, width=500)
-bt3.place(x=0, y=0)
-b1 = Button(w2)
-b2 = Button(w2)
-b3 = Button(w2)
-b4 = Button(w2)
-txt = Label(w2, text="Текст")
-b1.grid(column=0, row=0)
-b2.grid(column=1, row=0)
-b3.grid(column=0, row=1)
-b4.grid(column=1, row=1)
-txt.grid(column=2, row=0)
-ent = Entry(w2)
-ent.grid(column=2, row=1)
-b4['command'] = show_message
+root.geometry("500x500")
+def create_circle(ev):
+    try:
+        canvas.create_oval(int(ent1.get()), int(ent2.get()), int(ent3.get()), int(ent4.get()), fill='yellow')
+    except ValueError:
+        messagebox.showerror(message="Неверные данные")
+def create_rectangle(ev):
+    try:
+        canvas.create_rectangle(int(ent1.get()), int(ent2.get()), int(ent3.get()), int(ent4.get()), fill='yellow')
+    except ValueError:
+        messagebox.showerror(message="Неверные данные")
+def create_triangle(ev):
+    try:
+        canvas.create_polygon(int(ent1.get()), int(ent2.get()), int(ent3.get()), int(ent4.get()), int(ent5.get()), int(ent6.get()), fill='yellow')
+    except ValueError:
+        messagebox.showerror(message="Неверные данные")
+def circle_btn_ent(ev):
+    circle_btn['bg'] = 'white'
+    circle_btn['fg'] = 'lightgreen'
+def circle_btn_leave(ev):
+    circle_btn['bg'] = 'lightgreen'
+    circle_btn['fg'] = 'white'
+def rectangle_btn_ent(ev):
+    rectangle_btn['bg'] = 'white'
+    rectangle_btn['fg'] = 'lightgreen'
+def rectangle_btn_leave(ev):
+    rectangle_btn['bg'] = 'lightgreen'
+    rectangle_btn['fg'] = 'white'
+def triangle_btn_ent(ev):
+    triangle_btn['bg'] = 'white'
+    triangle_btn['fg'] = 'lightgreen'
+def triangle_btn_leave(ev):
+    triangle_btn['bg'] = 'lightgreen'
+    triangle_btn['fg'] = 'white'
+canvas = Canvas(root, width=500, height=500, bg='lightblue', cursor='pencil')
+canvas.pack(anchor=CENTER, expand=1)
+circle_btn = Button(root, text="Create Circle", bg='lightgreen', fg='white')
+circle_btn.place(x=10, y=50)
+rectangle_btn = Button(root, text="Create Rectangle", bg='lightgreen', fg='white')
+rectangle_btn.place(x=110, y=50)
+triangle_btn = Button(root, text="Create Triangle", bg='lightgreen', fg='white')
+triangle_btn.place(x=210, y=50)
+ent1 = Entry(root)
+ent2 = Entry(root)
+ent3 = Entry(root)
+ent4 = Entry(root)
+ent5 = Entry(root)
+ent6 = Entry(root)
+ent1.place(x=10, y=100)
+ent2.place(x=10, y=150)
+ent3.place(x=10, y=200)
+ent4.place(x=10, y=250)
+ent5.place(x=10, y=300)
+ent6.place(x=10, y=350)
+circle_btn.bind('<Button-1>', create_circle)
+circle_btn.bind('<Enter>', circle_btn_ent)
+circle_btn.bind('<Leave>', circle_btn_leave)
+rectangle_btn.bind('<Button-1>', create_rectangle)
+rectangle_btn.bind('<Enter>', rectangle_btn_ent)
+rectangle_btn.bind('<Leave>', rectangle_btn_leave)
+triangle_btn.bind('<Button-1>', create_triangle)
+triangle_btn.bind('<Enter>', triangle_btn_ent)
+triangle_btn.bind('<Leave>', triangle_btn_leave)
 root.mainloop()
-window.mainloop()
