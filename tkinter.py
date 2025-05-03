@@ -1,7 +1,9 @@
 from tkinter import *
 from tkinter import messagebox
 root = Tk()
+window = Tk()
 root.geometry("500x500")
+window.geometry("500x500")
 def create_circle(ev):
     try:
         canvas.create_oval(int(ent1.get()), int(ent2.get()), int(ent3.get()), int(ent4.get()), fill=ent5.get())
@@ -35,7 +37,7 @@ def triangle_btn_ent(ev):
 def triangle_btn_leave(ev):
     triangle_btn['bg'] = 'lightgreen'
     triangle_btn['fg'] = 'white'
-canvas = Canvas(root, width=500, height=500, bg='lightblue', cursor='pencil')
+canvas = Canvas(window, width=500, height=500, bg='lightblue', cursor='pencil')
 canvas.pack(anchor=CENTER, expand=1)
 circle_btn = Button(root, text="Create Circle", bg='lightgreen', fg='white')
 circle_btn.place(x=10, y=50)
@@ -67,3 +69,4 @@ triangle_btn.bind('<Button-1>', create_triangle)
 triangle_btn.bind('<Enter>', triangle_btn_ent)
 triangle_btn.bind('<Leave>', triangle_btn_leave)
 root.mainloop()
+window.mainloop()
