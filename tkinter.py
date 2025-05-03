@@ -4,17 +4,17 @@ root = Tk()
 root.geometry("500x500")
 def create_circle(ev):
     try:
-        canvas.create_oval(int(ent1.get()), int(ent2.get()), int(ent3.get()), int(ent4.get()), fill='yellow')
+        canvas.create_oval(int(ent1.get()), int(ent2.get()), int(ent3.get()), int(ent4.get()), fill=ent5.get())
     except ValueError:
         messagebox.showerror(message="Неверные данные")
 def create_rectangle(ev):
     try:
-        canvas.create_rectangle(int(ent1.get()), int(ent2.get()), int(ent3.get()), int(ent4.get()), fill='yellow')
+        canvas.create_rectangle(int(ent1.get()), int(ent2.get()), int(ent3.get()), int(ent4.get()), fill=ent5.get())
     except ValueError:
         messagebox.showerror(message="Неверные данные")
 def create_triangle(ev):
     try:
-        canvas.create_polygon(int(ent1.get()), int(ent2.get()), int(ent3.get()), int(ent4.get()), int(ent5.get()), int(ent6.get()), fill='yellow')
+        canvas.create_polygon(int(ent1.get()), int(ent2.get()), int(ent3.get()), int(ent4.get()), int(ent5.get()), int(ent6.get()), fill=ent7.get())
     except ValueError:
         messagebox.showerror(message="Неверные данные")
 def circle_btn_ent(ev):
@@ -49,12 +49,14 @@ ent3 = Entry(root)
 ent4 = Entry(root)
 ent5 = Entry(root)
 ent6 = Entry(root)
+ent7 = Entry(root)
 ent1.place(x=10, y=100)
 ent2.place(x=10, y=150)
 ent3.place(x=10, y=200)
 ent4.place(x=10, y=250)
 ent5.place(x=10, y=300)
 ent6.place(x=10, y=350)
+ent7.place(x=10, y=400)
 circle_btn.bind('<Button-1>', create_circle)
 circle_btn.bind('<Enter>', circle_btn_ent)
 circle_btn.bind('<Leave>', circle_btn_leave)
